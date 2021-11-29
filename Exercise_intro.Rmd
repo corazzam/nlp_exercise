@@ -1,0 +1,48 @@
+---
+title: "Exercise"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r, setup, include=F}
+require(tidyverse)
+```
+
+# Introduction
+
+The exercise consists of applying NLP to find similar text.
+
+Data is taken from [this](http://help.sentiment140.com/for-students/) open source dataset for NLP analysis. You can download the zipped dataset directly [here](https://docs.google.com/file/d/0B04GJPshIjmPRnZManQwWEdTZjg/edit?resourcekey=0-betyQkEmWZgp8z0DFxWsHw).
+
+Feel free to use R or Python (I am primarily an R user).
+
+# Data load
+
+Let's have a look at the dataset:
+
+```{r, cache=T}
+data <- readr::read_csv("./trainingandtestdata/training.1600000.processed.noemoticon.csv", col_names = F)
+data <- data %>% stats::setNames(c("Polarity", "ID", "Date", "Query", "User", "Text"))
+data %>% head()
+```
+
+# Exercise description
+
+Retrieve the 10 most similar tweets to the following tweet text:
+
+```{r}
+data %>% filter(ID == "1467810672") %>% select("Text")
+```
+
+If your computer has issues to handle the size of the data, feel free to limit it.
+
+Tips:
+
+- Start simple
+- Show reasoning
+
+Extra (optional): 
+
+- Call the function via an API call 
+- Make the most basic front-end to call the API
